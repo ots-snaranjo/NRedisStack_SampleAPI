@@ -21,5 +21,6 @@ RUN dotnet publish "./NRedisStack_SampleAPI.csproj" -c $BUILD_CONFIGURATION -o /
 
 FROM base AS final
 WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:8080
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "NRedisStack_SampleAPI.dll"]
