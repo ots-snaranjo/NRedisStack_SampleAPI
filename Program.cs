@@ -56,7 +56,7 @@ IDatabase db = redis.GetDatabase();
 
 app.MapGet("/", () => "Hello World!");
 
-var key = "myKey";
+var key = "myKey:"+Random.Shared.Next();
 app.MapPost("/todoitems/{id}", async (string id) =>
 {
     JsonCommands json = db.JSON();
