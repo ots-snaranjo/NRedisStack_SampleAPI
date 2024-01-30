@@ -69,7 +69,10 @@ app.MapPost("/todoitems/{id}", async (string id) =>
 app.MapGet("/todoitems", async () =>
 {
     JsonCommands json = db.JSON();
-    Results.Ok(json.Get<LayerResult>(key));
+    var results = json.Get<LayerResult>(key);
+    Console.WriteLine(results.Status.ToString());
+    Console.WriteLine(results.Value.ToString());
+    Results.Ok(results.Value);
 });
 
 app.Run();
